@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Kalkulator wynagrodzenia v1.01</title>
+</head>
+<body>			
+<!-- KALKULATOR -->
+				<div class="kalkulator">	
+				
+					<h1>Kalkulator Wynagrodzenia</h1>
+					<p>Podaj kwote BRUTTO:</p>
+					<input type="number" id="a">
+
+					<button onclick="suma();">Oblicz</button>
+						
+					<div id="wynik" style="margin: 20px;"></div>
+						
+					
+					<h3>Sprawdz ile możesz dorobić do emerytury/renty</h3>
+					<p>Podaj średnie wynagrodzenie brutto:</p>
+					<input type="number" id="bruttoSr">
+
+					<button onclick="sredniaKrajowa();">Oblicz</button>
+					
+
+					<div id="wynik3" style="margin: 20px;"></div>
+					
+					<p>Sprawdz czy Twoje wynagrodzenie nie przekracza limity</p>
+
+					<button onclick="przekroczenie();">Sprawdz</button>
+						
+					<div id="wynik2" style="margin: 20px;"></div>
+					
+					<script src="skrypt.js"></script>
+					
+				</div>
+<!-- KALKULATOR -->
+
+</body>
+</html>
