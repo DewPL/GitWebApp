@@ -1,0 +1,172 @@
+	#red
+	{
+		color: #fff;
+
+		background: #DC143C;
+		box-shadow: 0 0 10px #DC143C, 0 0 40px #DC143C, 0 0 80px #DC143C;
+		transition-delay: 1s;
+		
+		animation-name: neonRed;
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+	}
+	#yellow
+	{
+		color: #fff;
+		
+		background: #FFD700;
+		box-shadow: 0 0 10px #FFD700, 0 0 40px #FFD700, 0 0 80px #FFD700;
+		transition-delay: 1s;
+		
+		animation-name: neonYellow;
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+	}
+	#green
+	{
+		color: #fff;
+		background: linear-gradient(90deg, rgba(110,255,41,1) 0%, rgba(1,203,0,1) 100%);
+	}
+	#alert
+	{
+		color: red;
+		font-weight: 800;
+		font-size: 25px;
+		animation-name: color;
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+	}
+	#ocena
+	{
+		font-size: 35px;
+		height: 30px;
+		padding: 15px;
+		margin: auto;
+	}
+	#wynikBmi
+	{
+		font-weight: 800;
+		font-size: 25px;
+	}
+	#wynikBmi1
+	{
+		font-weight: 800;
+		font-size: 25px;
+		color: red;
+	}
+	#wynikBmi2
+	{
+		font-weight: 800;
+		font-size: 25px;
+		color: red;
+		animation-name: color;
+		animation-duration: 0.7s;
+		animation-iteration-count: infinite;
+	}
+	.pageOne
+	{
+		margin: auto;
+		padding: 15px;
+		background: #B9D9EB;
+		width: 55%;
+		height: 600px;
+		box-shadow: 13px 17px 30px 5px rgba(66, 68, 90, 1);
+	}
+	.pageTwo
+	{
+		margin: 150px auto;
+		padding: 15px;
+		background: #B9D9EB;
+		width: 55%;
+		height: auto;
+		box-shadow: 13px 17px 30px 5px rgba(66, 68, 90, 1);
+		
+	}
+	.twoBx
+	{
+		float: left;
+		width: 40%;
+	}
+	.threeBx
+	{
+		float: left;
+		width: 60%;
+		height: 250px;
+	}
+	.fourBx
+	{
+		float: left;
+		width: 100%;
+	}
+	.button
+	{
+		width: 200px;
+		height: 50px;
+		background: linear-gradient(90deg, rgba(0,224,255,1) 0%, rgba(0,172,255,1) 40%);
+		font-size: 30px;
+		font-weight: 600;
+		color: #fff;
+		border: none;
+		border-radius: 2%;
+		cursor: pointer;
+		display: block;
+		margin: 20px auto;
+		text-transform: uppercase;
+	}
+	.button:hover
+	{
+		background: linear-gradient(90deg, rgba(0,224,255,1) 64%, rgba(0,172,255,1) 100%);
+	}
+	.center
+	{
+		text-align: center;
+	}
+	.pole
+	{
+		font-size: 20px;
+	}
+	#wagaCss
+	{
+		margin-left: 50px;
+		display: inline-block;
+		margin: 20px auto;
+		font-size: 25px;
+		padding: 15px;
+	}
+
+	.alarm
+	{
+		animation-name: color;
+		animation-duration: 5s;
+		animation-iteration-count: infinite;
+	}
+	@keyframes color
+	{
+
+	0% { color:#ff0000; }
+
+	50% { color:#000; }
+
+	100% { color:#ff0000;}
+
+	}
+	@keyframes neonRed
+	{
+
+	0% { background:#f00; }
+
+	50% { background:#c00; }
+
+	100% { background:#f00;}
+
+	}
+	@keyframes neonYellow
+	{
+
+	0% { background:#FFD700; }
+
+	50% { background:#c00; }
+
+	100% { background:#FFD700;}
+
+	}

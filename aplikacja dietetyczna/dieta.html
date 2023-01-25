@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="PL">
+<head>
+	<meta charset="UTF-8">
+	<title>Aplikacja dietetyczna</title>
+	<link rel="stylesheet" href="styl.css">
+</head>
+<body>
+<div class="mainPg">
+<!--===== WODA =====-->
+	<div class="pageOne">
+		<div class="oneBx">
+			<h1>Kalkulator żywieniowy</h1>
+			<p id="wagaCss">Ile butelek wody wypiłeś?  <input class="pole" type="number" id="ilosc"></p>
+			<p id="wagaCss">Pojemność butelki:</p>
+
+			<select id="mySelect" class="pole">
+			  <option value="0.5">0.5</option>
+			  <option value="0.7">0.7</option>
+			  <option value="1">1</option>
+			  <option value="1.5">1.5</option>
+			</select>
+			<br>
+		</div>
+		
+		
+	<!--===== POSIŁKI =====-->	
+		<div class="twoBx">
+			<p id="wagaCss">Posiłki:</p><br>
+			<label class="pole" for="sniadanie">Śniadanie<input type="checkbox" id="sniadanie"></label><br>
+			<label class="pole" for="sniadanie2">II Śniadanie<input type="checkbox" id="sniadanie2"></label><br>
+			<label class="pole" for="obiad">Obiad<input type="checkbox" id="obiad"></label><br>
+			<label class="pole" for="lunch">Podwieczorek<input type="checkbox" id="lunch"></label><br>
+			<label class="pole" for="kolacja">Kolacja<input type="checkbox" id="kolacja"></label><br>
+		</div>
+		
+		<div class="threeBx">
+			<p id="drink"></p>
+			<p id="text4"></p>
+			<p id="text1"></p>
+			<p id="ocena"></p>
+		</div>
+		
+		<div class="fourBx">	
+			<div class="textCenter">
+				<button class="button" onclick="myWater()">oblicz</button>
+			</div>
+			<br>
+			<p id="wagaCss" class="alarm">Pamiętaj zjeść kolację 4 godziny przed pójściem spać</p>
+		</div>
+	</div>
+	
+	
+	
+<!--===== BMI =====-->
+	<div class="pageTwo">	
+		<h1>Kalkulator BMI</h1>
+		<label id="wagaCss" for="waga">Podaj wagę: <input class="pole" type="number" id="waga"></label>
+		<label id="wagaCss" for="wzrost">Podaj wzrost (0.00): <input class="pole" type="number" id="wzrost"></label><br>
+		
+		<p id="wynikBmi"></p><br>
+		<p id="iloscWody"></p>
+		
+		<div class="textCenter">
+			<button class="button" onclick="bmi()">oblicz</button>
+		</div>
+	</div>
+	
+</div>
+	
+	<script>
+	// Aplikacja dietetyczna
+	// Dominik Kolasiński
+
+	function myWater() 
+	{
+	
+		var x = document.getElementById("mySelect").value;
+		var y = document.getElementById("ilosc").value;
+		var wynik = x * y;
+		var progress = 0;
+		
+		var std1 = "Dobrze byle tak dalej";
+		
+		
+		
+		// Oblicza ilość wypitej wody
+		if(wynik<=1)
+			document.getElementById("drink").innerHTML = "<p id='wagaCss'>Wypiłeś: " + wynik.toFixed(2) + " litr wody</p>";
+		else if(wynik<=1.5)
+			document.getElementById("drink").innerHTML = "<p id='wagaCss'>Wypiłeś: " + wynik.toFixed(2) + " litr wody</p>";
+		else
+			document.getElementById("drink").innerHTML = "<p id='wagaCss'>Wypiłeś: " + wynik.toFixed(2) + " litr wody</p>";
+		
+		
+		if(wynik >= 2.5)
+			progress++;
+
+	
+// ========== WYLICZENIE PUNKTÓW Z POSIŁKU	
+// ========== Śniadanie
+		if(document.getElementById("sniadanie").checked)
+		{
+			progress++;
+		}
+
+// ========== Śniadanie 2
+		if(document.getElementById("sniadanie2").checked)
+		{
+			progress++;
+		}
+
+// ========== Obiad
+		if(document.getElementById("obiad").checked)
+		{
+			progress++;
+		}
+
+// ========== Podwieczorek
+		if(document.getElementById("lunch").checked)
+		{
+			progress++;
+		}
+
+// ========== Kolacja
+		if(document.getElementById("kolacja").checked)
+		{
+			progress++;
+		}
+
+
+		var stdOcena1 = "Twój wynik to: " + progress + " SŁABO!!";
+		var stdOcena2 = "Twój wynik to: " + progress + " jesteś na dobrej drodze do zdrowia";
+		var stdOcena3 = "Twój wynik to: " + progress + " SUPER byle tak dalej!!!";
+		var alert2 = "<span id='alert'>Pij więcej wody!</span>";
+		
+		if(progress <= 3)
+		{
+			document.getElementById("ocena").innerHTML = "<span id='red'>" + stdOcena1 + "</span>";
+			if(wynik <= 2)
+				document.getElementById("text4").innerHTML = alert2;
+		}
+		else if(progress > 3 && progress < 4.9)
+		{
+			document.getElementById("ocena").innerHTML = "<span id='yellow'>" + stdOcena2 + "</span>";
+			if(wynik <= 2)
+				document.getElementById("text4").innerHTML = alert2;
+		}
+		else if(progress >= 5)
+		{
+			document.getElementById("ocena").innerHTML = "<span id='green'>" + stdOcena3 + "</span>";
+			if(wynik <= 2)
+				document.getElementById("text4").innerHTML = alert2;
+			
+		}
+	
+	} // ========== Koniec MyWater
+	
+	function bmi()
+	{
+		var bmiWaga = document.getElementById("waga").value;
+		var bmiWzrost = document.getElementById("wzrost").value;
+		var wzrostKwadrat;
+		var bmi;
+
+// ===== Obliczenia bmi
+		wzrostKwadrat = bmiWzrost * bmiWzrost;
+		bmi = bmiWaga / wzrostKwadrat;
+		var iloscWody = bmiWaga / 10 * 0.3;
+		
+		if(bmiWaga == "" || bmiWzrost == "")
+		{
+			document.getElementById("wynikBmi").innerHTML = "<span id='alert'>Uzupełnij wszystkie pola</span>"
+		}
+		else
+		{
+			if(bmi<16.00)
+			{
+				document.getElementById("wynikBmi").innerHTML = bmi.toFixed(2) + "<span id='wynikBmi2'> wygłodzenie</span";
+			}
+			else if(bmi>16.00 && bmi<16.9)
+			{
+				document.getElementById("wynikBmi").innerHTML = bmi.toFixed(2) + "<span id='wynikBmi2'> wychudzenie</span>";
+			}
+			else if(bmi>17.00 && bmi<18.5)
+			{
+				document.getElementById("wynikBmi").innerHTML = bmi.toFixed(2) + "<span id='wynikBmi'> niedowaga</span>";
+			}
+			else if(bmi>18.5 && bmi<24.9)
+			{
+				document.getElementById("wynikBmi").innerHTML = bmi.toFixed(2) + "<span id='wynikBmi'> waga prawidłowa</span>";
+			}
+			else if(bmi>25.00 && bmi<29.9)
+			{
+				document.getElementById("wynikBmi").innerHTML = bmi.toFixed(2) + "<span id='wynikBmi1'> nadwaga</span>";
+			}
+			else if(bmi>30.00 && bmi<34.9)
+			{
+				document.getElementById("wynikBmi").innerHTML = bmi.toFixed(2) + "<span id='wynikBmi2'> otyłość I stopnia</span>";
+			}
+			else if(bmi>35.00 && bmi<39.9)
+			{
+				document.getElementById("wynikBmi").innerHTML = bmi.toFixed(2) + "<span id='wynikBmi2'> otyłość II stopnia</span>";
+			}
+			else if(bmi>=40.00)
+			{
+				document.getElementById("wynikBmi").innerHTML = bmi.toFixed(2) + "<span id='wynikBmi2'> otyłość III stopnia</span>";
+			}
+			document.getElementById("iloscWody").innerHTML = "Ilość wody jaką powinieneś wypijać przy Twojej wadze to: " + iloscWody + " litry dziennie.";
+		}
+	}
+	</script>
+</body>
+</html>
